@@ -54,7 +54,8 @@ class CarService {
         return new CarModel(response.man_id, response.model_id, response.prod_year,
             this.carResponseToPhoto(response), response.price_value, response.price_usd, response.car_run_km,
             response.views, response.for_rent, response.right_wheel, gearTypeNames[+response.gear_type_id],
-            fuelTypeNames[+response.fuel_type_id], response.engine_volume / 1000
+            fuelTypeNames[+response.fuel_type_id], response.engine_volume / 1000,
+            response.customs_passed
         );
     }
 

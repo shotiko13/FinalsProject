@@ -18,6 +18,10 @@ const Car: React.FC<CarProps> = ({ car, manufacturers, models, showingUSD, onTog
         <div>
             <img src={car.photo} alt={make} />
             <div>
+                <div>
+                    თბილისი
+                    {car.customsPassed ? <span className='text-success'>განბაჟებულია</span> : <span className='text-failure'>განბაჟება</span>}
+                </div>
                 <div><h2>{make}</h2> <h3>{model}</h3> <p>{car.year}</p></div>
                 <div>
                     <div>
