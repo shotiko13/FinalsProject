@@ -47,7 +47,7 @@ class CarService {
     }
 
     carResponseToPhoto(car: any): string {
-        return `https://static.my.ge/myauto/photos/${car.photo}/thumbs/${car.product_id}_1.jpg?v=${car.photo_ver}`
+        return `https://static.my.ge/myauto/photos/${car.photo}/thumbs/${car.car_id}_1.jpg?v=${car.photo_ver}`
     }
 
     carResponseToModel(response: any): CarModel { // TODO add fields as needed

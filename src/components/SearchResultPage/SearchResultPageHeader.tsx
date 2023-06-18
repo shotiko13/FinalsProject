@@ -31,7 +31,7 @@ const periodOptions: PeriodType[] = ['1h', '2h', '3h', '1d', '2d', '3d', '1w', '
 const sortOrderOptions = [1, 2, 3, 4, 5, 6];
 
 const SearchResultPageHeader: React.FC<SearchResultPageHeaderProps> = props => {
-    return <div>
+    return (<div>
         <div>
             {props.count} განცხადება
         </div>
@@ -62,6 +62,6 @@ const SearchResultPageHeader: React.FC<SearchResultPageHeaderProps> = props => {
             </div>
         </div>
     </div>
-}
+)}
 
 export default SearchResultPageHeader;

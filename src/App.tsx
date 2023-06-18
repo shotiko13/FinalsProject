@@ -13,6 +13,8 @@ import ManufacturerType from './models/ManufacturerType';
 import CarService from './services/CarService';
 import CategoryType from './models/CategoryType';
 import ModelType from './models/ModelType';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
       const [cars, setCars] = useState<CarModel[]>([]);
@@ -35,6 +37,8 @@ function App() {
       const [lastPage, setPage] = useState(1);
 
       const [showingUSD, setShowingUSD] = useState(false);
+
+      const [isRendered, setIsRendered] = useState(false);
 
       const carService = new CarService();
 
@@ -82,6 +86,8 @@ function App() {
       }
 
       useEffect(() => {
+        if(isRendered) return;
+
         const fetchData = async () => {
           try {
             const modelService = new ModelService();
@@ -96,16 +102,21 @@ function App() {
             setManufacturers(manufacturersData);
             setCategories(categoriesData);
             setModelsByManufacturer(modelsData);
+
+            search(lastFilterFields, period, sortOrder, lastPage);
           } catch (error) {
             console.error('Error fetching data:', error);
+          } finally {
+            setIsRendered(true);
           }
         };
     
         fetchData();
-      }, []);
+      }, [lastFilterFields, period, sortOrder, lastPage, isRendered, setIsRendered]);
 
       return (
         <div className="App">
+          <div className='d-flex'>
             <Filters
               onSearch={handleFilterSearch}
               manufacturers={manufacturers}
@@ -124,6 +135,8 @@ function App() {
               showingUSD={showingUSD}
               onToggleShowingUSD={() => setShowingUSD(!showingUSD)}
             />
+          </div>
+          
         </div>
       );
 }
