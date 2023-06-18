@@ -32,12 +32,14 @@ const sortOrderOptions = [1, 2, 3, 4, 5, 6];
 
 const SearchResultPageHeader: React.FC<SearchResultPageHeaderProps> = props => {
     return (<div>
-        <div>
-            {props.count} განცხადება
-        </div>
-        <div>
+        <div className="d-flex justify-content-between">
+            <div>
+                {props.count} განცხადება
+            </div>
+            <div className="d-flex justify-content-end">
             <div>
                 <select 
+                    className="form-select"
                     value={props.period}
                     onChange={(e) => props.onPeriodChanged(e.target.value as PeriodType)}
                 >
@@ -48,17 +50,19 @@ const SearchResultPageHeader: React.FC<SearchResultPageHeaderProps> = props => {
                     ))}
                 </select>
             </div>
-            <div>
-                <select 
-                    value={props.sortOrder}
-                    onChange={(e) => props.onSortOrderChanged(+e.target.value as SortOrderType)}
-                >
-                    {sortOrderOptions.map((option) => (
-                        <option key={option} value={option}>
-                            {sortOrderToTextDictionary[option - 1]}
-                        </option>
-                    ))}
-                </select>
+                <div>
+                    <select 
+                        className="form-select"
+                        value={props.sortOrder}
+                        onChange={(e) => props.onSortOrderChanged(+e.target.value as SortOrderType)}
+                    >
+                        {sortOrderOptions.map((option) => (
+                            <option key={option} value={option}>
+                                {sortOrderToTextDictionary[option - 1]}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
         </div>
     </div>

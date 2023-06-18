@@ -84,6 +84,19 @@ const Filters: React.FC<FiltersProps> = ({ onSearch, manufacturers, categories, 
                  </ select>
           </div>
           <hr/>
+
+          <div className="p-3 flex-grow-1 mt-4">
+              <label className='form-floating mb-2'>მოდელი</label>
+              <select className='form-select' value={model?.id || ''} onChange={(e) => setModel(models.find(mod => mod.id === +e.target.value) || null)}>
+                  <option value="">ყველა მოდელი</option>
+                  {models.map((option, id) => (
+                      <option key={id} value={option.id}>
+                          {option.name}
+                      </option>
+                  ))}
+              </select>
+          </div>
+          <hr/>
           
           <div className="p-3 flex-grow-1 mt-4">
           <label className='form-floating mb-2'>კატეგორია</label>
@@ -99,6 +112,7 @@ const Filters: React.FC<FiltersProps> = ({ onSearch, manufacturers, categories, 
           <hr/>
           <div className="p-3 flex-grow-1 mt-4">
           <label className='form-floating mb-2' htmlFor="priceRange">ფასი</label>
+          <div className='d-flex'>
              <div className="input-group">
              <input className="form-control" type="number" placeholder="დან" value={priceFrom !== null ? priceFrom.toString() : ''} onChange={(e) => setPriceFrom(+e.target.value)} />
              <span className="input-group-text">-</span>
@@ -108,8 +122,9 @@ const Filters: React.FC<FiltersProps> = ({ onSearch, manufacturers, categories, 
              <button onClick={onToggleShowingUSD}>{showingUSD ? '$' : '₾'}</button>
              </div>
           </div>
+          </div>
           <div className="p-3 flex-grow-1 mt-4">
-        <button className="btn btn-primary font-size-12 text-gray-800 font-medium mb-8px mt-2-0px" style={{color: ''}} onClick={handleSearch}>
+        <button className="btn btn-primary font-size-12 text-gray-800 font-medium mb-4" style={{color: ''}} onClick={handleSearch}>
           ძებნა
         </button>
       </div>
