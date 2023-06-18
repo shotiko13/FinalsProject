@@ -15,6 +15,7 @@ import CategoryType from './models/CategoryType';
 import ModelType from './models/ModelType';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Header from './components/Header/Header';
 
 function App() {
       const [cars, setCars] = useState<CarModel[]>([]);
@@ -117,6 +118,7 @@ function App() {
       return (
         <div className="App">
           <div className='d-flex'>
+            <Header />
             <Filters
               onSearch={handleFilterSearch}
               manufacturers={manufacturers}
